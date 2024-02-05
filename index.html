@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap"
+      rel="stylesheet"
+    />
+    <title id="title-header">The Witcher</title>
+    <style>
+      body {
+        background: linear-gradient(black, #1e1e20);
+        color: #ddf6fb;
+        font-family: "PT Serif", serif;
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 50px;
+        display: block;
+        font-weight: 500;
+        text-shadow: 5px 5px 9px black;
+      }
+
+      h3 {
+        font-size: 30px;
+        font-weight: 800;
+        text-align: center;
+        margin-top: 80px;
+      }
+      .program-synopsis {
+        text-align: center;
+        font-size: 18px;
+        display: block;
+      }
+
+      .netflix-button {
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        display: block;
+        margin: 20px auto;
+        margin-top: 40px;
+        padding: 13px 30px;
+        border-radius: 15px;
+        border: solid 1px #e50914;
+        background-color: black;
+        font-family: Arial, Helvetica, sans-serif;
+        box-shadow: 2px 1px 5px #e50914;
+        transition: all 140ms ease-in-out;
+      }
+      .netflix-button a {
+        text-decoration: none;
+        color: #fff;
+      }
+      button:hover {
+        cursor: pointer;
+        opacity: 0.8;
+        background-color: #e50914;
+        color: #fff;
+      }
+
+      .page-content {
+        max-width: 95%;
+        display: block;
+        margin: 0 auto;
+      }
+      .top-header {
+        background-image: url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/113/706/original/MV5BMTAyOGNkYTAtZWQyNS00YWYxLTk5YjktODY1OGI4NjYwYTZjXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_2.jpg?1707065546);
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: block;
+        margin: 0 auto;
+        padding: 100px 20px;
+        border-radius: 10px;
+      }
+      .header-text {
+        text-align: center;
+        font-size: 24px;
+        display: block;
+        max-width: 40%;
+        padding: 10px;
+      }
+      .menu-header {
+        display: flex;
+        justify-content: space-around;
+
+        padding: 20px;
+        font-size: 18px;
+        position: sticky;
+        top: 0;
+        z-index: 1;
+      }
+      .menu-options {
+        border: 2px #ddf6fb solid;
+        padding: 10px 30px;
+        border-radius: 5px;
+        background-color: #94a6a9;
+        color: #1e1e20;
+        transition: all 140ms ease-in;
+      }
+      .menu-options a {
+        text-decoration: none;
+        color: #1e1e20;
+      }
+      .menu-options:hover {
+        cursor: pointer;
+        background-color: #ddf6fb;
+      }
+      .character-list {
+        list-style: none;
+        display: flex;
+        justify-content: space-evenly;
+        padding: 0;
+        margin-top: 100px;
+      }
+      .character-image {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        transition: all 180ms ease-in-out;
+      }
+      .character-image img {
+        max-width: 90%;
+        height: auto;
+        border-radius: 50%;
+      }
+      .character-name {
+        font-size: 20px;
+        margin-top: 20px;
+      }
+
+      .character-image:hover {
+        transform: scale(1.32);
+        filter: drop-shadow(-10px -10px 4px #ddf6fb);
+      }
+      .monster-section {
+        margin-top: 120px;
+      }
+      .emblem {
+        filter: brightness(1.4);
+      }
+      .monster-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 30px;
+      }
+      .monster-description {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 17px;
+      }
+
+      .image-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .monster-image {
+        max-width: 100%;
+        filter: brightness(1.1);
+        border-radius: 5px;
+        transition: all 180ms ease-in-out;
+      }
+      .monster-image:hover {
+        filter: brightness(2);
+      }
+      .book-flexbox {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .buy-item {
+        padding: 30px;
+        font-size: 18px;
+        border: solid 2px #434349;
+        margin: 20px;
+        border-radius: 10px;
+      }
+      .buy-item a {
+        text-decoration: none;
+        border: 2px #ddf6fb solid;
+        padding: 10px 30px;
+        border-radius: 5px;
+        background-color: #434349;
+        color: #ddf6fb;
+        transition: all 140ms ease-in;
+      }
+      .buy-item a:hover {
+        background-color: #fff;
+        color: #ff9900;
+        font-weight: bold;
+      }
+      .buy-image {
+        max-width: 65%;
+        border-radius: 10px;
+      }
+      .darkTheme {
+        background: linear-gradient(
+          109.6deg,
+          rgb(6, 2, 2) 32.4%,
+          rgb(137, 30, 47) 98.8%
+        );
+      }
+    </style>
+  </head>
+  <body id="body">
+    <header class="menu-header">
+      <div class="menu-options">
+        <a href="#character-section">Meet the Characters</a>
+      </div>
+      <div class="menu-options">
+        <a href="#monster-section">Meet the Monsters</a>
+      </div>
+      <div class="menu-options">
+        <a href="#explore-section">Explore the Lore</a>
+      </div>
+      <div class="menu-options" id="mailing-list">
+        <a>Join the Mailing List</a>
+      </div>
+      <div class="menu-options" id="theme-button">
+        <a>Switch Theme</a>
+      </div>
+    </header>
+    <div class="page-content">
+      <div class="top-header">
+        <div class="header-text">
+          <h1 id="title-header">The Witcher</h1>
+          <img
+            src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/113/864/original/logaster-2020-06-witcher-logo.png?1707128166"
+            alt=""
+            width="150"
+            class="emblem"
+          />
+          <p class="program-synopsis">
+            A fantasy series full of monsters, sorcery and war. The Witcher
+            follows the adventures of Geralt, a mutated monster hunter,
+            struggling to find his place in a world in which people often prove
+            more wicked than beasts. But when destiny hurtles him toward a
+            powerful sorceress, and a young princess with a special gift, the
+            three must learn to navigate independently the increasingly volatile
+            Continent.
+          </p>
+          <button class="netflix-button">
+            <a href="https://www.netflix.com/browse" target="_blank"
+              >Watch on Netflix</a
+            >
+          </button>
+        </div>
+        <br />
+      </div>
+      <div>
+        <h3 id="character-section">Meet the Characters</h3>
+        <ul class="character-list">
+          <li class="character-image">
+            <div class="character-name">Geralt</div>
+
+            <img
+              src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/113/761/original/henry-cavill-the-witcher-season-2-1639401516_%281%29.png?1707082793"
+              alt=""
+            />
+          </li>
+          <li class="character-image">
+            <span class="character-name">Yennefer</span>
+            <img
+              src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/113/758/original/the-witcher-netflix-1601033449.png?1707082483"
+              alt=""
+            />
+          </li>
+          <li class="character-image">
+            <span class="character-name">Ciri</span>
+            <img
+              src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/113/762/original/960x0.png?1707082987"
+              alt=""
+            />
+          </li>
+          <li class="character-image">
+            <span class="character-name">Tissaia</span>
+            <img
+              src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/113/764/original/r37rd8oflleb1.png?1707083149"
+              alt=""
+            />
+          </li>
+          <li class="character-image">
+            <span class="character-name">Jaskier</span>
+            <img
+              src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/113/772/original/witcher-jaskier-dandelion-post.png?1707083432"
+              alt=""
+            />
+          </li>
+        </ul>
+      </div>
+      <h3 id="monster-section">Meet the Monsters</h3>
+      <div class="monster-section">
+        <div class="image-box">
+          <img
+            src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/113/865/original/kikimora-witcher.png?1707129165"
+            alt=""
+            class="monster-image"
+          />
+        </div>
+        <div class="monster-description">
+          <strong><u>The Kikimora</u></strong>
+          <p>
+            Kikimore, or kikimora, is an insectoid monster species that lives
+            underground, as well as in swamps. <br /><br />
+            <em
+              >"Caldemeyne shifted from foot to foot, looking at the spidery
+              shape with its dry black skin, that glassy eye with its vertical
+              pupil, the needle-like fangs in the bloody jaws."" pg. 75-76, The
+              Last Wish (UK edition)</em
+            >
+          </p>
+        </div>
+        <div class="image-box">
+          <img
+            src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/113/866/original/104c74ae4036ebc17f1f93d2b5f7b061915e336a_1638439929.png?1707130131"
+            alt=""
+            class="monster-image"
+          />
+        </div>
+        <div class="monster-description">
+          <strong><u>The Striga</u></strong>
+          <p>
+            A striga is a human woman transformed into a monster by a curse. She
+            is filled with hatred towards all living beings, devouring them
+            without a second thought. She only comes out on a full moon to hunt,
+            fighting with incredible speed and strength.
+          </p>
+        </div>
+        <div class="image-box">
+          <img
+            src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/113/869/original/Djinn-Amphora.png?1707133099"
+            alt=""
+            class="monster-image"
+          />
+        </div>
+        <div class="monster-description">
+          <strong><u>The Djinn</u></strong>
+          <p>
+            Much the same as in fairy tales, Djinns are powerful creatures that
+            are capable of great feats. Once captured, they are then bound to
+            the captor and have to fulfill three wishes. Following their
+            completion, they are free once more. <br /><br />
+            <em
+              >"Going back to genies, there are four sorts, just as there are
+              four Planes. Djinns are air creatures; marides are associated with
+              the principle of water; afreet are Fire genies and d'ao, the
+              genies of Earth" pg.250 - 251, The Last Wish (UK edition)</em
+            >
+          </p>
+        </div>
+        <div class="image-box">
+          <img
+            src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/113/870/original/The-Witcher-Golden-Dragon.png?1707133333"
+            alt=""
+            class="monster-image"
+          />
+        </div>
+        <div class="monster-description">
+          <strong><u>The Dragon</u></strong>
+          <p>
+            Dragons are flying monsters classified as draconids, which are said
+            to represent the forces of Chaos. Apart from cats, they are the only
+            creatures known to absorb magical energy, and are drawn to hoarding
+            gold.
+          </p>
+        </div>
+      </div>
+      <div>
+        <h3 id="explore-section">Explore the Lore</h3>
+        <div class="book-flexbox">
+          <div class="buy-item">
+            <img
+              src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/113/874/original/51HUINWXINL._SY445_SX342_.jpg?1707140168"
+              alt=""
+              class="buy-image"
+            />
+            <p>Paper Back £9.99 RRP</p>
+            <br />
+            <a
+              href="https://www.amazon.co.uk/Baptism-Fire-Witcher-major-Netflix/dp/1473231108/ref=sr_1_10?crid=WITQA063QJW&keywords=the+witcher+paperback&qid=1707143156&sprefix=the+witcher+paper%2Caps%2C107&sr=8-10"
+              target="_blank"
+            >
+              Buy Now
+            </a>
+          </div>
+          <div class="buy-item">
+            <img
+              src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/113/875/original/51wF6a_MNnL._SY445_SX342_.jpg?1707140195"
+              alt=""
+              class="buy-image"
+            />
+            <p>Paper Back £9.19 RRP</p>
+            <br />
+            <a
+              href="https://www.amazon.co.uk/Lady-Lake-Witcher-major-Netflix/dp/1473231124/ref=sr_1_16?crid=WITQA063QJW&keywords=the+witcher+paperback&qid=1707143331&sprefix=the+witcher+paper%2Caps%2C107&sr=8-16"
+              target="_blank"
+            >
+              Buy Now
+            </a>
+          </div>
+          <div class="buy-item">
+            <img
+              src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/113/877/original/91mXC-HDXzL._SY466_.jpg?1707140254"
+              alt=""
+              class="buy-image"
+            />
+            <p>Paper Back £6.99 RRP</p>
+            <br />
+            <a
+              href="https://www.amazon.co.uk/Last-Wish-Introducing-Witcher-Netflix/dp/147323106X/ref=sr_1_1?crid=WITQA063QJW&keywords=the+witcher+paperback&qid=1707143331&sprefix=the+witcher+paper%2Caps%2C107&sr=8-1"
+              target="_blank"
+            >
+              Buy Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function turnDarkTheme() {
+        let bodyDark = document.querySelector("#body");
+        if (bodyDark.classList.contains("darkTheme")) {
+          bodyDark.classList.remove("darkTheme");
+        } else {
+          bodyDark.classList.add("darkTheme");
+        }
+      }
+      let darkThemeButton = document.querySelector("#theme-button");
+      darkThemeButton.addEventListener("click", turnDarkTheme);
+
+      function scrollToTop() {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
+
+      function requestMailInfo() {
+        let name = prompt("What is your name?");
+        let email = prompt("What is your email?");
+        let age = prompt("What is your age?");
+        if (age < 15) {
+          alert(
+            `Hi ${name}, unfortunatele the programme's content is rated +15🚫 so we cannot add you to our mailing list ☹️ `
+          );
+        } else {
+          let titleHeader = document.querySelector("h1");
+          titleHeader.innerHTML = `Thanks ${name}. You have been added to our mailing list!`;
+          scrollToTop();
+        }
+      }
+
+      let mailButton = document.querySelector("#mailing-list");
+      mailButton.addEventListener("click", requestMailInfo);
+    </script>
+  </body>
+</html>
